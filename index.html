@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emily Frouin</title>
+    <link rel="preconnect" href="https://rsms.me/">
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+    <style>
+        :root {
+            font-family: Inter, sans-serif;
+            font-feature-settings: 'liga' 1, 'calt' 1; /* fix for Chrome */
+        }
+        @supports (font-variation-settings: normal) {
+        :root { font-family: InterVariable, sans-serif; }
+}
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter, Calibre', 'Inter', 'San Francisco', 'SF Pro Text', -apple-system, system-ui, sans-serif;
+            background-color: rgb(140, 28, 19);
+            background-image: radial-gradient(
+                circle at top left,
+                #ec407a,
+                #ec407a 20%,
+                #7e57c2 20%,
+                #7e57c2 40%,
+                #42a5f5 40%,
+                #42a5f5 60%,
+                #26a69a 60%,
+                #26a69a 80%,
+                #9ccc65 80%
+            );
+            color: #e6e6e6;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.3;
+            display: flex;
+            padding: 10%;
+        }
+
+        .left-column {
+            width: 30%;
+            height: 100vh;
+            position: fixed;
+            padding: 40px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .right-column {
+            width: 60%;
+            margin-left: 40%;
+            padding: 40px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #ffd700;
+            margin-bottom: 40px;
+        }
+
+        a:link {
+            color: #e6e6e6;
+            font-weight: bold;
+            text-decoration: none;
+            
+        }
+        a:visited {
+            color: #7e57c2 20%;
+            
+        }
+        a:hover {
+           color: #ec407a; 
+           text-decoration: none;
+        }
+
+        .nav-links {
+            list-style: none;
+            margin-bottom: 40px;
+        }
+
+        .nav-links li {
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .nav-links a {
+            color: #e6e6e6;
+            text-decoration: none;
+            font-size: 14px;
+            padding-left: 30px;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: #ffd700;
+        }
+
+        .nav-links a::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            width: 20px;
+            height: 1px;
+            background-color: #ffd700;
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+            transform-origin: right;
+        }
+
+        .nav-links a:hover::before, .nav-links a.active::before {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+
+        .hero h1 {
+            font-size: 16px;
+            color: #ffd700;
+            margin-bottom: 20px;
+        }
+
+        .hero h2 {
+            font-size: 60px;
+            color: #ffffff;
+            margin-bottom: 10px;
+        }
+
+        .hero h3 {
+            font-size: 20px;
+            color: #e6e6e6;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            margin-bottom: 30px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            color: #ffd700;
+            background-color: transparent;
+            border: 1px solid #ffd700;
+            border-radius: 4px;
+            padding: 1rem 1.5rem;
+            font-size: 14px;
+            line-height: 1;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
+        }
+
+        .cta-button:hover {
+            background-color: rgba(255, 215, 0, 0.1);
+        }
+
+        .section-title {
+            font-size: 32px;
+            color: #ffffff;
+            margin-bottom: 40px;
+        }
+
+        .about-content {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 60px;
+        }
+
+        .about-text {
+            flex: 0 0 100%;
+        }
+        .about-p {
+            margin-bottom: 1rem;
+        }
+        .about-image {
+            flex: 0 0 35%;
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 4px;
+        }
+
+        .skills-list {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(140px, 200px));
+            gap: 0 10px;
+            padding: 0;
+            margin: 20px 0 0 0;
+            overflow: hidden;
+            list-style: none;
+        }
+
+        .skills-list li {
+            position: relative;
+            margin-bottom: 10px;
+            padding-left: 20px;
+            font-size: 13px;
+        }
+
+        .skills-list li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: #ffd700;
+            font-size: 14px;
+            line-height: 12px;
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 800px;
+        }
+
+        .timeline-item {
+            display: flex;
+            margin-bottom: 30px;
+            transition: background-color 0.3s ease;
+            border-radius: 6px;
+            padding: 10px;
+        }
+
+        .timeline-item:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .timeline-date {
+            flex: 0 0 30%;
+            text-align: right;
+            padding-right: 20px;
+            font-size: 14px;
+            color: #e6e6e6;
+            font-weight: 300;
+            padding-top: 3px;
+        }
+
+        .timeline-content {
+            flex: 0 0 70%;
+        }
+
+        .timeline-content h3 {
+            color: #ffffff;
+            font-size: 22px;
+            margin-bottom: 5px;
+        }
+
+        .timeline-content h4 {
+            color: #ffd700;
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+
+        .timeline-content ul {
+            list-style-type: none;
+            padding-left: 20px;
+        }
+
+        .timeline-content ul li {
+            margin-bottom: 10px;
+            position: relative;
+        }
+
+        .timeline-content ul li::before {
+            content: '•';
+            position: absolute;
+            left: -20px;
+            color: #ffd700;
+            opacity: 0.5;
+        }
+
+        .timeline-label {
+            display: inline-block;
+            padding: 2px 8px;
+            background-color: rgba(255, 215, 0, 0.1);
+            color: #ffd700;
+            border-radius: 12px;
+            font-size: 12px;
+            margin-bottom: 10px;
+        }
+
+        .social-links {
+            margin-top: auto;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .social-links a {
+            color: #e6e6e6;
+            font-size: 20px;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: #ffd700;
+        }
+
+        .blinking {
+            animation: blinker 2s ease infinite;
+            font-weight: bold;
+        }
+
+        @keyframes blinker {
+            50% {
+                opacity: 0;
+            }
+        }
+        horizontal-rule {
+            display: block;
+            height: 1px;
+            border: 0;
+            border-top: 1px solid #ccc;
+            margin: 1em 0;
+            padding: 10px;
+        }
+        
+
+    </style>
+</head>
+<body>
+    <div class="left-column">
+        
+        <section class="hero">
+            <h2>Emily Frouin</h2>
+            <h3>Engineering Manager | Staff Engineer</h3>
+            <p>I'm an experienced manager with a background in backend engineering. I love systems architecture and making great developer experiences. </p>
+            <p class="blinking">I'm open to new roles</p>
+        </section>
+        
+        <nav>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+            </ul>
+        </nav>
+        
+    </div>
+
+    <div class="right-column">
+        <section id="about">
+            <div class="about-content">
+                <div class="about-text">
+                    <p class="about-p">I enjoy building things, but what I believe I do better is creating an environment for teams to build great things. </p>
+                    <p class="about-p">I've had the privilege of working at companies of all stages: <a class="h-link" href="https://www.skillshare.com">a start-up</a>, <a href="https://www.baesystems.com/en/digital/home">a publicly traded, international corporation</a>, and <a href="https://www.uottawa.ca">local university</a>. My main focus these days is contributing to meaningful products that make this world a better place for their users.</p>
+                    <p class="about-p">Here are a few technologies I've been working with recently:</p>
+
+                    <ul>
+                        <li class="timeline-label">JavaScript (ES6+)</li>
+                        <li class="timeline-label">React</li>
+                        <li class="timeline-label">Node.js</li>
+                        <li class="timeline-label">TypeScript</li>
+                        <li class="timeline-label">PHP</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience">
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">Jun 2022 - Aug 2024</div>
+                    <div class="timeline-content">
+                        <h3>Engineering Manager</h3>
+                        <h4>Skillshare</h4>
+                        <ul>
+                            <li>Led integration of acquired software systems to support new business directions </li>
+                            <li>Managed and integrated acquired company team into existing workflow and practices</li>
+                            <li>Collaborated with product and business stakeholders to develop an iterative roadmap for integrating acquired software features</li>
+                            <li>Implemented user behavior tracking in all new features for performance evaluation</li>
+                        </ul>
+
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">Nov 2020 - Jun 2022</div>
+                    <div class="timeline-content">
+                        <h3>Team Engineering Lead</h3>
+                        <h4>Skillshare</h4>
+                        <ul>
+                            <li>Coached and provided technical mentorship to a team of 3 mid-level engineers.</li>
+                            <li>Set up an end-to-end frontend test pipeline and upgraded administration tools.</li>
+                            <li>Led cross-team project planning, coordination, and quality engineering project development.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">Apr 2019 - Nov 2020</div>
+                    <div class="timeline-content">
+                        <h3>Senior API Platform Developer</h3>
+                        <h4>Skillshare</h4>
+                        <ul>
+                            <li>Set up automated end-to-end API tests as part of the continuous deployment pipeline, JS & TypeScript, GraphQL.</li>
+                            <li>Installed GraphQL API on PHP application, expanded existing NodeJS GraphQL microservice, integrated Apollo Gateway for federation.</li>
+                            <li>Led development of a new API testing framework for integration into continuous deployment pipeline.</li>
+                            <li>Participated in maintenance of existing REST APIs.</li>
+                            <li>Led liaison between mobile development team and platform team on feature development across APIs.</li>
+                            <li>Led migration of existing REST APIs into federated GraphQL schemas.</li>
+                            <li>Responsible for reviewing and approving team code across all areas of the application.</li>
+                            <li>Responded to deployment incidents and outages and monitored the health and stability of the deployment pipelines.</li>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">Jul 2017 - Apr 2019</div>
+                    <div class="timeline-content">
+                        <h3>Senior API Platform Developer</h3>
+                        <h4>University of Ottawa</h4>
+                        <ul>
+                            <li>Migrated enterprise-wide hybrid-cloud API Gateway solution for middleware security.</li>
+                            <li>Successfully completed distributed cluster using the container platform Docker Swarm, and containerized legacy applications into a microservice architecture.</li>
+                            <li>Took ownership of business process design for internal stakeholders with project management tools (Jira/Confluence, Atlassian) as part of a departmental transition to the Agile methodology.</li>
+                            <li>Led department-wide training sessions and onboarding workshops as part of the delivery of Jira and Confluence.</li>
+                            <li>Participated in architectural consultations with IT development teams as a direct report to the lead Enterprise Architect.</li>
+                            <li>Led a series of presentations on containerization technology to internal and external potential clients.</li>
+                            <li>Led workshops on project reporting, implemented with Jira, to fulfill the goal of executive-level capacity planning and budget reporting.</li>
+                            <li>Mentored junior analysts; managed onboarding learning plans, assigned and supervised project tasks, and reviewed completed work.</li>
+                            <li>Participated in requirement elicitation for business-focused API models.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">Nov 2016 - Jul 2017</div>
+                    <div class="timeline-content">
+                        <h3>Analyst</h3>
+                        <h4>BAE Systems Applied Intelligence</h4>
+                        <ul>
+                            <li>Responsible for implementing and configuring search indexer on complex object structure.</li>
+                            <li>Traced data through document manipulators to uncover leakages and failuresin data pipelin.</li>
+                        </ul>
+                    </div>
+                </div>
+                <horizontal-rule/>
+                <h3>Other notable experience</h3>
+                <div class="timeline-item">
+                    <div class="timeline-date">Feb 2016 - Nov 2016</div>
+                    <div class="timeline-content">
+                        <h3>Quality Assurance Analyst</h3>
+                        <h4>University of Ottawa</h4>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">Jul 2014 - Sep 2015</div>
+                    <div class="timeline-content">
+                        <h3>Quality Assurance Analyst</h3>
+                        <h4>Canada Border Services Agency</h4>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">Jun 2013 - Jul</div>
+                    <div class="timeline-content">
+                        <h3>Business Analyst</h3>
+                        <h4>Canada Border Services Agency</h4>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+    </div>
+
+    
+
+    <script>
+        // Add active class to navigation links on click
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelectorAll('.nav-links a').forEach(l => l.classList.remove('active'));
+                this.classList.add('active');
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
