@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,11 +10,15 @@
     <style>
         :root {
             font-family: Inter, sans-serif;
-            font-feature-settings: 'liga' 1, 'calt' 1; /* fix for Chrome */
+            font-feature-settings: 'liga' 1, 'calt' 1;
+            /* fix for Chrome */
         }
+
         @supports (font-variation-settings: normal) {
-        :root { font-family: InterVariable, sans-serif; }
-}
+            :root {
+                font-family: InterVariable, sans-serif;
+            }
+        }
 
         * {
             margin: 0;
@@ -22,20 +27,18 @@
         }
 
         body {
-            font-family: 'Inter, Calibre', 'Inter', 'San Francisco', 'SF Pro Text', -apple-system, system-ui, sans-serif;
+            font-family: 'Calibre', 'Inter', 'San Francisco', 'SF Pro Text', -apple-system, system-ui, sans-serif;
             background-color: rgb(140, 28, 19);
-            background-image: radial-gradient(
-                circle at top left,
-                #ec407a,
-                #ec407a 20%,
-                #7e57c2 20%,
-                #7e57c2 40%,
-                #42a5f5 40%,
-                #42a5f5 60%,
-                #26a69a 60%,
-                #26a69a 80%,
-                #9ccc65 80%
-            );
+            background-image: radial-gradient(circle at top left,
+                    #ec407a,
+                    #ec407a 20%,
+                    #7e57c2 20%,
+                    #7e57c2 40%,
+                    #42a5f5 40%,
+                    #42a5f5 60%,
+                    #26a69a 60%,
+                    #26a69a 80%,
+                    #9ccc65 80%);
             color: #e6e6e6;
             color: rgba(255, 255, 255, 0.8);
             line-height: 1.3;
@@ -46,7 +49,6 @@
 
         .left-column {
             width: 30%;
-            height: 100vh;
             position: fixed;
             padding: 40px;
             overflow-y: auto;
@@ -61,6 +63,14 @@
             padding: 40px;
         }
 
+        .bottom-row {
+            width: 100%;
+            position: fixed;
+            bottom: 0vh;
+            display: flex;
+            flex-direction: row;
+        }
+
         .logo {
             font-size: 24px;
             font-weight: bold;
@@ -72,17 +82,22 @@
             color: #e6e6e6;
             font-weight: bold;
             text-decoration: none;
-            
-        }
-        a:visited {
-            color: #7e57c2 20%;
-            
-        }
-        a:hover {
-           color: #ec407a; 
-           text-decoration: none;
+
         }
 
+        a:visited {
+            color: #e6e6e6;
+
+        }
+
+        a:hover {
+            color: #ec407a;
+            text-decoration: none;
+        }
+
+        nav {
+            margin-top: 2rem;
+        }
         .nav-links {
             list-style: none;
             margin-bottom: 40px;
@@ -101,7 +116,8 @@
             transition: color 0.3s ease;
         }
 
-        .nav-links a:hover, .nav-links a.active {
+        .nav-links a:hover,
+        .nav-links a.active {
             color: #ffd700;
         }
 
@@ -118,7 +134,8 @@
             transform-origin: right;
         }
 
-        .nav-links a:hover::before, .nav-links a.active::before {
+        .nav-links a:hover::before,
+        .nav-links a.active::before {
             transform: scaleX(1);
             transform-origin: left;
         }
@@ -180,9 +197,11 @@
         .about-text {
             flex: 0 0 100%;
         }
+
         .about-p {
             margin-bottom: 1rem;
         }
+
         .about-image {
             flex: 0 0 35%;
         }
@@ -316,6 +335,7 @@
                 opacity: 0;
             }
         }
+
         horizontal-rule {
             display: block;
             height: 1px;
@@ -324,35 +344,112 @@
             margin: 1em 0;
             padding: 10px;
         }
-        
 
+        .social-row {
+            margin-bottom: 1rem;
+            margin-left:0.50rem;
+            align-items: center;
+            display: flex;
+        }
+
+        .social-row li {
+            line-height: 1rem;
+            font-size: .75rem;
+            list-style: none;
+            flex-shrink: 0;
+            margin-right: 1.25rem;
+        }
+
+        p.low-margin {
+            margin-bottom: .75rem;
+        }
+        .block {
+            display: block;
+        }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border-width: 0;
+        }
+
+        svg {
+            display: block;
+            height: 1.5rem;
+            width: 1.5rem;
+        }
+
+        @media(max-width:800px) {
+            body.left-column body.right-column {
+                flex-direction: row;
+                width: 100%;
+            }
+        }
     </style>
 </head>
+
 <body>
     <div class="left-column">
-        
+
         <section class="hero">
             <h2>Emily Frouin</h2>
             <h3>Engineering Manager | Staff Engineer</h3>
-            <p>I'm an experienced manager with a background in backend engineering. I love systems architecture and making great developer experiences. </p>
-            <p class="blinking">I'm open to new roles</p>
+            <p class="low-margin">I'm an experienced manager with a background in backend engineering. I love systems architecture and
+                making great developer experiences. </p>
+            <ul class="social-row">
+                <li>
+                    <a class="block hover:text-slate-200" href="https://github.com/emfrouin" target="_blank"
+                        rel="noreferrer noopener" aria-label="GitHub (opens in a new tab)" title="GitHub">
+                        <span class="sr-only">GitHub</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="#e6e6e6" class="h-6 w-6"
+                            aria-hidden="true">
+                            <path
+                                d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z">
+                            </path>
+                        </svg>
+                    </a>
+                </li>
+                <li>
+                    <a class="block hover:text-slate-200" href="https://www.linkedin.com/in/emilyfrouin/"
+                        target="_blank" rel="noreferrer noopener" aria-label="LinkedIn (opens in a new tab)"
+                        title="LinkedIn"><span class="sr-only">LinkedIn</span><svg xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24" fill="#e6e6e6" class="h-6 w-6" aria-hidden="true">
+                            <path
+                                d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19a.66.66 0 000 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z">
+                            </path>
+                        </svg></a>
+                </li>
+            </ul>
+            
         </section>
-        
+
         <nav>
             <ul class="nav-links">
                 <li><a href="#about">About</a></li>
                 <li><a href="#experience">Experience</a></li>
             </ul>
         </nav>
-        
+
     </div>
 
     <div class="right-column">
         <section id="about">
             <div class="about-content">
                 <div class="about-text">
-                    <p class="about-p">I enjoy building things, but what I believe I do better is creating an environment for teams to build great things. </p>
-                    <p class="about-p">I've had the privilege of working at companies of all stages: <a class="h-link" href="https://www.skillshare.com">a start-up</a>, <a href="https://www.baesystems.com/en/digital/home">a publicly traded, international corporation</a>, and <a href="https://www.uottawa.ca">local university</a>. My main focus these days is contributing to meaningful products that make this world a better place for their users.</p>
+                    <p class="about-p">I enjoy building things, but what I believe I do better is creating an
+                        environment for teams to build great things. </p>
+                    <p class="about-p">I've had the privilege of working at companies of all stages: <a class="h-link"
+                            href="https://www.skillshare.com">a start-up</a>, <a
+                            href="https://www.baesystems.com/en/digital/home">a publicly traded, international
+                            corporation</a>, and <a href="https://www.uottawa.ca">local university</a>. My main focus
+                        these days is contributing to meaningful products that make this world a better place for their
+                        users.</p>
                     <p class="about-p">Here are a few technologies I've been working with recently:</p>
 
                     <ul>
@@ -376,7 +473,8 @@
                         <ul>
                             <li>Led integration of acquired software systems to support new business directions </li>
                             <li>Managed and integrated acquired company team into existing workflow and practices</li>
-                            <li>Collaborated with product and business stakeholders to develop an iterative roadmap for integrating acquired software features</li>
+                            <li>Collaborated with product and business stakeholders to develop an iterative roadmap for
+                                integrating acquired software features</li>
                             <li>Implemented user behavior tracking in all new features for performance evaluation</li>
                         </ul>
                         <div>
@@ -396,7 +494,8 @@
                         <ul>
                             <li>Coached and provided technical mentorship to a team of 3 mid-level engineers.</li>
                             <li>Set up an end-to-end frontend test pipeline and upgraded administration tools.</li>
-                            <li>Led cross-team project planning, coordination, and quality engineering project development.</li>
+                            <li>Led cross-team project planning, coordination, and quality engineering project
+                                development.</li>
                         </ul>
                         <div>
                             <span class="timeline-label">Cypress</span>
@@ -413,14 +512,20 @@
                         <h3>Senior API Platform Developer</h3>
                         <h4>Skillshare</h4>
                         <ul>
-                            <li>Set up automated end-to-end API tests as part of the continuous deployment pipeline, JS & TypeScript, GraphQL.</li>
-                            <li>Installed GraphQL API on PHP application, expanded existing NodeJS GraphQL microservice, integrated Apollo Gateway for federation.</li>
-                            <li>Led development of a new API testing framework for integration into continuous deployment pipeline.</li>
+                            <li>Set up automated end-to-end API tests as part of the continuous deployment pipeline, JS
+                                & TypeScript, GraphQL.</li>
+                            <li>Installed GraphQL API on PHP application, expanded existing NodeJS GraphQL microservice,
+                                integrated Apollo Gateway for federation.</li>
+                            <li>Led development of a new API testing framework for integration into continuous
+                                deployment pipeline.</li>
                             <li>Participated in maintenance of existing REST APIs.</li>
-                            <li>Led liaison between mobile development team and platform team on feature development across APIs.</li>
+                            <li>Led liaison between mobile development team and platform team on feature development
+                                across APIs.</li>
                             <li>Led migration of existing REST APIs into federated GraphQL schemas.</li>
-                            <li>Responsible for reviewing and approving team code across all areas of the application.</li>
-                            <li>Responded to deployment incidents and outages and monitored the health and stability of the deployment pipelines.</li>
+                            <li>Responsible for reviewing and approving team code across all areas of the application.
+                            </li>
+                            <li>Responded to deployment incidents and outages and monitored the health and stability of
+                                the deployment pipelines.</li>
                             </li>
                         </ul>
                         <div>
@@ -439,13 +544,21 @@
                         <h4>University of Ottawa</h4>
                         <ul>
                             <li>Migrated enterprise-wide hybrid-cloud API Gateway solution for middleware security.</li>
-                            <li>Successfully completed distributed cluster using the container platform Docker Swarm, and containerized legacy applications into a microservice architecture.</li>
-                            <li>Took ownership of business process design for internal stakeholders with project management tools (Jira/Confluence, Atlassian) as part of a departmental transition to the Agile methodology.</li>
-                            <li>Led department-wide training sessions and onboarding workshops as part of the delivery of Jira and Confluence.</li>
-                            <li>Participated in architectural consultations with IT development teams as a direct report to the lead Enterprise Architect.</li>
-                            <li>Led a series of presentations on containerization technology to internal and external potential clients.</li>
-                            <li>Led workshops on project reporting, implemented with Jira, to fulfill the goal of executive-level capacity planning and budget reporting.</li>
-                            <li>Mentored junior analysts; managed onboarding learning plans, assigned and supervised project tasks, and reviewed completed work.</li>
+                            <li>Successfully completed distributed cluster using the container platform Docker Swarm,
+                                and containerized legacy applications into a microservice architecture.</li>
+                            <li>Took ownership of business process design for internal stakeholders with project
+                                management tools (Jira/Confluence, Atlassian) as part of a departmental transition to
+                                the Agile methodology.</li>
+                            <li>Led department-wide training sessions and onboarding workshops as part of the delivery
+                                of Jira and Confluence.</li>
+                            <li>Participated in architectural consultations with IT development teams as a direct report
+                                to the lead Enterprise Architect.</li>
+                            <li>Led a series of presentations on containerization technology to internal and external
+                                potential clients.</li>
+                            <li>Led workshops on project reporting, implemented with Jira, to fulfill the goal of
+                                executive-level capacity planning and budget reporting.</li>
+                            <li>Mentored junior analysts; managed onboarding learning plans, assigned and supervised
+                                project tasks, and reviewed completed work.</li>
                             <li>Participated in requirement elicitation for business-focused API models.</li>
                         </ul>
                         <div>
@@ -463,8 +576,10 @@
                         <h3>Analyst</h3>
                         <h4>BAE Systems Applied Intelligence</h4>
                         <ul>
-                            <li>Responsible for implementing and configuring search indexer on complex object structure.</li>
-                            <li>Traced data through document manipulators to uncover leakages and failuresin data pipelin.</li>
+                            <li>Responsible for implementing and configuring search indexer on complex object structure.
+                            </li>
+                            <li>Traced data through document manipulators to uncover leakages and failuresin data
+                                pipelin.</li>
                         </ul>
                         <div>
                             <span class="timeline-label">Java</span>
@@ -472,7 +587,7 @@
                         </div>
                     </div>
                 </div>
-                <horizontal-rule/>
+                <horizontal-rule />
                 <h3>Other notable experience</h3>
                 <div class="timeline-item">
                     <div class="timeline-date">Feb 2016 - Nov 2016</div>
@@ -497,20 +612,27 @@
                 </div>
             </div>
         </section>
-        
     </div>
+    <div class="bottom-row">
 
-    
+    </div>
+</body>
 
-    <script>
-        // Add active class to navigation links on click
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                document.querySelectorAll('.nav-links a').forEach(l => l.classList.remove('active'));
-                this.classList.add('active');
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'});
-                });
+
+
+
+<script>
+    // Add active class to navigation links on click
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', function (e) {
+            e.preventDefault();
+            document.querySelectorAll('.nav-links a').forEach(l => l.classList.remove('active'));
+            this.classList.add('active');
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
             });
-    </script>
+        });
+    });
+</script>
+
+</html>
