@@ -386,6 +386,10 @@
             height: 1.5rem;
             width: 1.5rem;
         }
+        section.active {
+            padding-bottom: 50vh;
+        }
+
 
         @media(max-width:800px) {
             body.left-column body.right-column {
@@ -440,7 +444,7 @@
                     </svg></a>
             </li>
         </ul>
-        <section id="about">
+        <section id="about" class="active">
             <div class="about-content">
                 <div class="about-text">
                     <p class="about-p">I enjoy building things, but what I believe I do better is creating an
@@ -629,9 +633,12 @@
             e.preventDefault();
             document.querySelectorAll('.nav-links a').forEach(l => l.classList.remove('active'));
             this.classList.add('active');
+            document.querySelectorAll('.right-column section').forEach(l => l.classList.remove('active'));
+            this.classList.add('active');
             document.querySelector(this.getAttribute('href')).scrollIntoView({
                 behavior: 'smooth'
             });
+            document.querySelector(this.getAttribute('href')).classList.add('active');
         });
     });
 </script>
